@@ -50,19 +50,78 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => "Hello " .$profileinfo['displayName']. "....You typed " .$text
+				'text' => "Hello " .$profileinfo['displayName']. "\n....You typed " .$text
 			];
-			$message4 = [
-				'type' => 'image',
-				'originalContentUrl' => 'https://iservices.me/profile/'.$uid.'.png',
-				'previewImageUrl' => 'https://iservices.me/profile/'.$uid.'.png'
+			$message2 = [
+				'type' => 'template',
+				'altText' => 'This is a confirm Template',
+				'template' => array(
+						'type' => 'confirm',
+						'text' => 'Are you sure?',
+						'actions' => array(
+							array(
+								'type' => 'message',
+								'label' => 'Yes',
+								'text' => 'yes'
+							),
+							array(
+								'type' => 'message',
+								'label' => 'No',
+								'text' => 'no'
+							)
+						)
+				)
+			];
+
+			$message3 = [
+				'type' => 'template',
+				'altText' => 'This is a carousel template',
+				'template' => array(
+						'type' => 'carousel',
+						'columns' => array(
+							array(
+								'thumbnailImageUrl' => 'https://iservices.me/imgBC/1.png',
+								'title' => 'this is menu',
+								'text' => 'text description',
+								'actions' => array(
+									array(
+										'type' => 'uri',
+										'label' => 'View in Google',
+										'uri' => 'https://www.google.com'
+									),
+									array(
+										'type' => 'message',
+										'label' => 'Say Hello',
+										'text' => 'Hello'
+									)
+								)
+							),
+							array(
+								'thumbnailImageUrl' => 'https://iservices.me/imgBC/2.png',
+								'title' => 'this is menu',
+								'text' => 'text description',
+								'actions' => array(
+									array(
+										'type' => 'uri',
+										'label' => 'View in LINE',
+										'uri' => 'https://line.me'
+									),
+									array(
+										'type' => 'message',
+										'label' => 'Say Hello',
+										'text' => 'Hello'
+									)
+								)
+							)
+						)
+				)
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages,$message4],
+				'messages' => [$messages,$message2,$message3],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
