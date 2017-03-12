@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 		$resultpic = curl_exec($chpic);
 		curl_close($chpic);
 		fclose($saveuri);
-		
+
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => 'Hello '.$profileinfo['displayName'].' 'You typed' '.$text 
+				'text' => 'Hello '.$profileinfo['displayName'] 'You typed '.$text
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
