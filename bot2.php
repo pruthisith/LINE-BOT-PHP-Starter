@@ -52,12 +52,17 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => "Hello " .$profileinfo['displayName']. "....You typed " .$text
 			];
+			$message4 = [
+				'type' => 'image',
+				'originalContentUrl' => 'https://iservices.me/profile/'.$uid.'.png',
+				'previewImageUrl' => 'https://iservices.me/profile/'.$uid.'.png'
+			];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$messages,$message4],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
