@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => "Hello " .$profileinfo['displayName']. "\nYou typed". "\n" .""".$text."""
+				'text' => "Hello " .$profileinfo['displayName']. "\nYou typed". "\n" .'"'.$text.'"'
 			];
 			$message2 = [
 				'type' => 'template',
