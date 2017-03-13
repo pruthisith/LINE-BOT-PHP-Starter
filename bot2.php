@@ -81,7 +81,6 @@ if (!is_null($events['events'])) {
 						'columns' => array(
 							array(
 								'thumbnailImageUrl' => 'https://iservices.me/imgBC/1.png',
-								'title' => '123',
 								'text' => 'text description',
 								'actions' => array(
 									array(
